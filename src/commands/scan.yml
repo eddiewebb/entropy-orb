@@ -1,0 +1,23 @@
+parameters:
+  disable_entropy:
+    type: boolean
+    default: false
+    description: "Should we disable truffleHog's entropy detection?"
+  regexp_rules:
+    type: string
+    default: ""
+    description: "Override default regexp rules with this file."
+  repo_path:
+    type: string
+    default: "."
+    description: "Scan alternate local or remote repo"
+steps:
+  - run:
+      name: Scan using truffleHog
+      command: 
+        trufflehog --max_depth=1 
+        --regexp
+        <<# parameters.disable_entropy >> --entropy=False <</ parameters.disable_entropy >>
+        <<# parameters.regexp_rules >> --rules=<<parameters.regexp_rules>> <</ parameters.regexp_rules >>
+        <<parameters.repo_path>>
+       

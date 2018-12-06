@@ -1,0 +1,4 @@
+workflows:
+  scan:
+    jobs:
+      - secret_scan/scan

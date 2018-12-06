@@ -1,0 +1,2 @@
+version: 2.1
+description: Uses popualr open source tools to scan for secrets within the project
