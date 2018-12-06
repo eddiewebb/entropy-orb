@@ -11,6 +11,10 @@ parameters:
     type: string
     default: "."
     description: "Scan alternate local or remote repo"
+  max_history:
+    type: string
+    default: "1"
+    description: "How many revisions back to scan"
 docker:
   - image: circleci/python:2.7  #its just really popular, and therefore fast (cached)
 steps:
@@ -20,3 +24,4 @@ steps:
       disable_entropy: <<parameters.disable_entropy>>
       regexp_rules: <<parameters.regexp_rules>>
       repo_path: <<parameters.repo_path>>
+      max_history: <<parameters.max_history>>

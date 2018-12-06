@@ -26,21 +26,7 @@ function setup {
 
 }
 
-
-
-
 @test "Job: STep Ordering is Correct" {
-  # given
-  process_config_with test/inputs/fulljob.yml
-
-  # whe
-  assert_jq_match '.jobs["secret_scan/scan"].steps[0]' checkout
-  assert_jq_match '.jobs["secret_scan/scan"].steps[1].run.name' 'Install truffleHog'
-  assert_jq_match '.jobs["secret_scan/scan"].steps[2].run.name' 'Scan using truffleHog'
-
-}
-
-@test "Job: Step Ordering is Correct" {
   # given
   process_config_with test/inputs/fulljob.yml
 

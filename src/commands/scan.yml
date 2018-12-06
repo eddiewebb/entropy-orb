@@ -11,12 +11,16 @@ parameters:
     type: string
     default: "."
     description: "Scan alternate local or remote repo"
+  max_history:
+    type: string
+    default: "1"
+    description: "How far back to scan in git revisions"
 steps:
   - run:
       name: Scan using truffleHog
       command: 
-        trufflehog --max_depth=1 
-        --regexp
+        trufflehog --max_depth=<<parameters.max_history>>
+        --regex
         <<# parameters.disable_entropy >> --entropy=False <</ parameters.disable_entropy >>
         <<# parameters.regexp_rules >> --rules=<<parameters.regexp_rules>> <</ parameters.regexp_rules >>
         <<parameters.repo_path>>

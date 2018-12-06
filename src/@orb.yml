@@ -1,2 +1,4 @@
 version: 2.1
-description: Uses popualr open source tools to scan for secrets within the project
+description: |
+  Uses popular open source tools to scan for secrets within the project. 
+  - truffleHog: See https://github.com/dxa4481/truffleHog for more info.
