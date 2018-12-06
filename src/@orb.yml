@@ -2,3 +2,27 @@ version: 2.1
 description: |
   Uses popular open source tools to scan for secrets within the project. 
   - truffleHog: See https://github.com/dxa4481/truffleHog for more info.
+
+
+examples:
+  simple_scan:
+    description: Scan current commit for any secrets.
+    usage:
+      version: 2.1
+      orbs:
+        secret_scan: eddiewebb/secret_scan@volatile
+      workflows:
+        scan:
+          jobs:
+            - secret_scan/scan
+  custom_scan:
+    description: Include custom rules
+    usage:
+      version: 2.1
+      orbs:
+        secret_scan: eddiewebb/secret_scan@volatile
+      workflows:
+        scan:
+          jobs:
+            - secret_scan/scan:
+                regexp_rules: path/to/rules.json
