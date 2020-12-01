@@ -16,7 +16,7 @@ parameters:
     default: "1"
     description: "How many revisions back to scan"
 docker:
-  - image: circleci/python:2.7  #its just really popular, and therefore fast (cached)
+  - image: circleci/python:3  #its just really popular, and therefore fast (cached)
 steps:
   - checkout
   - install
